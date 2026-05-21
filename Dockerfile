@@ -1,6 +1,6 @@
 FROM nvidia/cuda:12.4.0-runtime-ubuntu22.04 AS base
 # FROM python:3.12 AS base
-
+RUN python -m ensurepip --upgrade
 RUN pip install --no-cache-dir uv
 
 RUN uv pip install --system --no-cache torch torchvision torchaudio
