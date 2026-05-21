@@ -18,7 +18,7 @@ CMD ["/bin/bash"]
 
 FROM base AS build
 
-ENV SCVI_PATH="/usr/local/lib/python3.12/site-packages/scvi-tools"
+ENV SCVI_PATH="/usr/local/lib/scvi-tools"
 
 COPY . ${SCVI_PATH}
 
