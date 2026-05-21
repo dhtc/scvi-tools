@@ -1,5 +1,8 @@
 FROM nvidia/cuda:12.4.0-runtime-ubuntu22.04 AS base
 
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+
 # 1. 添加 PPA 并安装 Python 3.12 (移除 python3.12-distutils，添加 python3.12-venv)
 RUN apt-get update && apt-get install -y software-properties-common && \
     add-apt-repository ppa:deadsnakes/ppa && \
