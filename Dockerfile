@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y software-properties-common && \
     && rm -rf /var/lib/apt/lists/*
 
 # 2. 安装 pip (通过 get-pip.py 方式最稳妥)
-RUN curl -LsSf https://astral.sh | sh && \
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
     ln -s /root/.local/bin/uv /usr/bin/uv
 
 # 3. 建立软链接
