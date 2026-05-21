@@ -10,7 +10,6 @@ RUN apt-get update && apt-get install -y \
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
 # 3. 接下来再执行你的原逻辑
-RUN python -m ensurepip --upgrade
 RUN pip install --no-cache-dir uv
 
 RUN uv pip install --system --no-cache torch torchvision torchaudio
