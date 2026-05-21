@@ -1,19 +1,19 @@
 FROM nvidia/cuda:12.4.0-runtime-ubuntu22.04 AS base
 
-# 1. 添加 PPA 并安装 Python 3.12
+# 1. 添加 PPA 并安装 Python 3.12 (移除 python3.12-distutils，添加 python3.12-venv)
 RUN apt-get update && apt-get install -y software-properties-common && \
     add-apt-repository ppa:deadsnakes/ppa && \
     apt-get update && apt-get install -y \
     python3.12 \
     python3.12-dev \
-    python3.12-distutils \
+    python3.12-venv \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# 2. 为 Python 3.12 安装对应的 pip
+# 2. 安装 pip (通过 get-pip.py 方式最稳妥)
 RUN curl -sS https://pypa.io | python3.12
 
-# 3. 建立软链接（确保命令指向 3.12 版本）
+# 3. 建立软链接
 RUN ln -sf /usr/bin/python3.12 /usr/bin/python3 && \
     ln -sf /usr/bin/python3.12 /usr/bin/python && \
     ln -sf /usr/local/bin/pip3.12 /usr/local/bin/pip
