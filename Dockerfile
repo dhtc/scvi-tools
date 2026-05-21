@@ -14,17 +14,14 @@ RUN apt-get update && apt-get install -y software-properties-common && \
     && rm -rf /var/lib/apt/lists/*
 
 # 2. 安装 pip (通过 get-pip.py 方式最稳妥)
-RUN curl -sS https://pypa.io | python3.12
+RUN curl -LsSf https://astral.sh | sh && \
+    ln -s /root/.local/bin/uv /usr/bin/uv
 
 # 3. 建立软链接
 RUN ln -sf /usr/bin/python3.12 /usr/bin/python3 && \
-    ln -sf /usr/bin/python3.12 /usr/bin/python && \
-    ln -sf /usr/local/bin/pip3.12 /usr/local/bin/pip
+    ln -sf /usr/bin/python3.12 /usr/bin/python
 
-# 4. 安装 uv (uv 会自动识别当前的 Python 3.12)
-RUN pip install --no-cache-dir uv
-
-# 5. 安装 Torch 依赖
+# 4. 安装 Torch 依赖
 RUN uv pip install --system --no-cache torch torchvision torchaudio
 
 FROM base AS build
