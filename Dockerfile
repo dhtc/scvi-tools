@@ -17,4 +17,11 @@ RUN uv pip install --system --no-cache torch torchvision torchaudio
 
 CMD ["/bin/bash"]
 
-# ... 后续 build 阶段保持不变
+FROM base AS build
+
+ENV SCVI_PATH="/usr/local/lib/python3.12/site-packages/scvi-tools"
+
+COPY . ${SCVI_PATH}
+
+ARG DEPENDENCIES=""
+RUN uv pip install --system "scvi-tools[${DEPENDENCIES}] @ ${SCVI_PATH}"
