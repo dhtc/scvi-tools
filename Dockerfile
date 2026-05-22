@@ -22,7 +22,7 @@ RUN ln -sf /usr/bin/python3.12 /usr/bin/python3 && \
     ln -sf /usr/bin/python3.12 /usr/bin/python
 
 # 4. 安装 Torch 依赖
-RUN uv pip install --system --no-cache torch torchvision torchaudio
+RUN uv pip install --system --no-cache torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 
 FROM base AS build
 ENV SCVI_PATH="/usr/local/lib/scvi-tools"
