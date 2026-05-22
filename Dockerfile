@@ -33,5 +33,6 @@ ARG DEPENDENCIES=""
 RUN uv pip install --system "scvi-tools[${DEPENDENCIES}] @ ${SCVI_PATH}"
 
 RUN uv pip install --system --no-cache jupyterlab
+RUN uv pip install --system --no-cache igraph
 
 CMD ["/bin/bash"]

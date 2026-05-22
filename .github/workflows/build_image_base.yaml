@@ -35,7 +35,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          cache-from: type=registry,ref=ghcr.io/scverse/scvi-tools:buildcache
+          cache-from: type=registry,ref=ghcr.io/dhtc/scvi-tools:buildcache
           cache-to: type=registry,ref=ghcr.io/dhtc/scvi-tools:buildcache
           target: build
           tags: ghcr.io/dhtc/scvi-tools:py3.13-cu12-base
