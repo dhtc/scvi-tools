@@ -32,4 +32,6 @@ ARG DEPENDENCIES=""
 # 此时 Python 3.12 环境已就绪，scvi-tools 可以顺利通过版本检查
 RUN uv pip install --system "scvi-tools[${DEPENDENCIES}] @ ${SCVI_PATH}"
 
+RUN uv pip install --system --no-cache jupyterlab
+
 CMD ["/bin/bash"]
